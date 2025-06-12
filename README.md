@@ -20,7 +20,7 @@ Este projeto é composto por duas partes principais:
 
 ### Executar projeto
 1. Clone o repositório:
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/LudmilaGuedes/ap2_fullstack.git
 
 2. Acesse a pasta do projeto:
    cd nome-da-pasta
@@ -36,8 +36,7 @@ Este projeto é composto por duas partes principais:
    python manage.py runserver 
    streamlit run app.py
 
-### Colaboradores
-## 👥 Colaboradores
+##  Colaboradores
 
 | Nome                     | GitHub                                      |
 |--------------------------|---------------------------------------------|

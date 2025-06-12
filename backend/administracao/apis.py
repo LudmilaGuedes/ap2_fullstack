@@ -33,14 +33,24 @@ def pegar_aluno_por_id(request, aluno_id: int):
              description="Insere um novo aluno na tabela tb_alunos"
              )
 def criar_aluno(request, data: TbAlunosSchemaIn):
-    aluno = TbAlunos(
+
+    cep_obj = TbEnderecos.objects.filter(pk=data.cep).first() if data.cep else None
+    carro_obj = TbCarros.objects.filter(pk=data.carro).first() if data.carro else None
+
+    if data.cep and not cep_obj:
+        return {"erro": "CEP não encontrado."}, 400
+    if data.carro and not carro_obj:
+        return {"erro": "Carro não encontrado."}, 400
+
+    aluno = TbAlunos.objects.create(
         nome_aluno=data.nome_aluno,
         email=data.email,
-        cep=TbEnderecos.objects.get(pk=data.cep) if data.cep else None,
-        carro=TbCarros.objects.get(pk=data.carro) if data.carro else None
+        cep=cep_obj,
+        carro=carro_obj
     )
-    aluno.save()
+
     return aluno
+
 
 
 # PUT: Atualizar aluno por ID
